@@ -4,6 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:view ="clr-namespace:Hospital.View"
+        xmlns:vm="clr-namespace:Hospital.ViewModel"
+        d:DataContext="{d:DesignInstance Type=vm:MainVM, IsDesignTimeCreatable=False}"
         mc:Ignorable="d"
         Title="Больница" Height="350" Width="525"
         ResizeMode="CanResizeWithGrip"
@@ -18,8 +21,8 @@
                     VerticalAlignment="Center"
                     Width="120">
             <Button HorizontalAlignment="Center"
+                    Command="{Binding AuthorizationCmd}"
                     Background="Transparent"
-                    CommandParameter=""
                     BorderThickness="0">
                 <Image Source="pack://application:,,,/Images/auth.png"/>
             </Button>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hospital.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,11 @@ namespace Hospital
     /// </summary>
     public partial class App : Application
     {
+        private MainWindow MainView;
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            MainView = new MainWindow();
+            MainWindow.ShowDialog();
+        }
     }
 }

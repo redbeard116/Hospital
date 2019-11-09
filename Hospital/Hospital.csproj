@@ -63,6 +63,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Command\ViewModelBase.cs" />
+    <Compile Include="Interface\Authorization.cs" />
+    <Compile Include="Interface\IAuthorization.cs" />
+    <Compile Include="ViewModel\AuthVM.cs" />
+    <Compile Include="ViewModel\MainVM.cs" />
     <Compile Include="View\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
@@ -130,6 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\caps.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
