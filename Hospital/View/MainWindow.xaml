@@ -1,0 +1,41 @@
+﻿<Controls:MetroWindow x:Class="Hospital.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Больница" Height="350" Width="525"
+        ResizeMode="CanResizeWithGrip"
+        FontSize="14"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Width="120">
+            <Button HorizontalAlignment="Center"
+                    Background="Transparent"
+                    CommandParameter=""
+                    BorderThickness="0">
+                <Image Source="pack://application:,,,/Images/auth.png"/>
+            </Button>
+            <Label Content="Авторизация"
+                   HorizontalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Width="120">
+            <Button HorizontalAlignment="Center"
+                    Background="Transparent"
+                    BorderThickness="0">
+                <Image Source="pack://application:,,,/Images/appoint.png"/>
+            </Button>
+            <Label Content="Запись на прием"
+                   HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Controls:MetroWindow>
