@@ -1,13 +1,12 @@
-﻿using Hospital.Command;
+﻿using System;
 using Hospital.DialogService;
 
 namespace Hospital.ViewModel
 {
-    public class AuthVM:ViewModelBase
+    public class AppointVM
     {
         private readonly IDialogService _dialogService;
-
-        public AuthVM(IDialogService dialogService)
+        public AppointVM(IDialogService dialogService)
         {
             _dialogService = dialogService;
         }

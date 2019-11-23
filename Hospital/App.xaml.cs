@@ -1,10 +1,4 @@
 ﻿using Hospital.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Hospital
@@ -15,9 +9,12 @@ namespace Hospital
     public partial class App : Application
     {
         private MainWindow MainView;
+        private MainVM _mainVM;
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             MainView = new MainWindow();
+            _mainVM = new MainVM(new DialogService.DialogService());
+            MainView.DataContext = _mainVM;
             MainWindow.ShowDialog();
         }
     }

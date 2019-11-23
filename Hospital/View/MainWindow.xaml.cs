@@ -25,7 +25,6 @@ namespace Hospital
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainVM();
         }
     }
 }

@@ -1,22 +1,36 @@
-﻿using System;
-using Hospital.Command;
+﻿using Hospital.Command;
+using Hospital.DialogService;
+using Hospital.View;
 
 namespace Hospital.ViewModel
 {
     public class MainVM:ViewModelBase
     {
+        #region Открытие окна, пока не понял как использовать
+        private readonly IDialogService _dialogService; 
+        #endregion
+
+        public MainVM(IDialogService dialog)
+        {
+            _dialogService = dialog;
+        }
+
         public RelayCommand AuthorizationCmd => new RelayCommand(Authorization);
 
-        private static void Authorization(object obj)
+        private void Authorization(object obj)
         {
-            
+            var authVM = new AuthVM(_dialogService);
+            var auth = new Auth() { DataContext = authVM};
+            auth.ShowDialog();
         }
 
         public RelayCommand AppointmentCmd => new RelayCommand(Appointment);
 
-        private static void Appointment(object obj)
+        private void Appointment(object obj)
         {
-            throw new NotImplementedException();
+            var appointVM = new AppointVM(_dialogService);
+            var appoint = new Appoint() { DataContext = appointVM };
+            appoint.ShowDialog();
         }
     }
 }

@@ -65,8 +65,17 @@
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Command\ViewModelBase.cs" />
+    <Compile Include="DialogService\DialogService.cs" />
+    <Compile Include="DialogService\IDialogService.cs" />
     <Compile Include="Interface\Authorization.cs" />
     <Compile Include="Interface\IAuthorization.cs" />
+    <Compile Include="Interface\Insert\IInsertData.cs" />
+    <Compile Include="Interface\Insert\InsertData.cs" />
+    <Compile Include="Interface\Select\ISelectData.cs" />
+    <Compile Include="Interface\Select\SelectData.cs" />
+    <Compile Include="Interface\Update\IUpdateData.cs" />
+    <Compile Include="Interface\Update\UpdateData.cs" />
+    <Compile Include="ViewModel\AppointVM.cs" />
     <Compile Include="ViewModel\AuthVM.cs" />
     <Compile Include="ViewModel\MainVM.cs" />
     <Compile Include="View\Registration.xaml.cs">
@@ -138,6 +147,7 @@
     <Resource Include="Images\caps.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DB\" />
     <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
