@@ -34,6 +34,7 @@
                     Width="120">
             <Button HorizontalAlignment="Center"
                     Background="Transparent"
+                    Command="{Binding AppointmentCmd}"
                     BorderThickness="0">
                 <Image Source="pack://application:,,,/Images/appoint.png"/>
             </Button>

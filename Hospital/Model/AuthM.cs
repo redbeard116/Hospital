@@ -2,9 +2,12 @@
 
 namespace Hospital.Model
 {
-    [Table("password", Schema = "public")]
+    [Table("auth", Schema = "public")]
     public class AuthM
     {
+        [Column("auth_id")]
+        public int AuthId { get; set; }
+
         [Column("user_id")]
         public int UserId { get; set; }
 

@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:vm="clr-namespace:Hospital.ViewModel"
+        d:DataContext="{d:DesignInstance Type=vm:RegistrationVM, IsDesignTimeCreatable=False}"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Регистрация" Height="250" Width="300">
@@ -18,15 +20,18 @@
                  Controls:TextBoxHelper.ClearTextButton="True"
                  Grid.Row="0"
                  Margin="10,0,10,0"
+                 Text="{Binding Email}"
                  VerticalAlignment="Center"/>
         <TextBox Controls:TextBoxHelper.Watermark="Логин"
                  Controls:TextBoxHelper.ClearTextButton="True"
                  Grid.Row="1"
                  Margin="10,0,10,0"
+                 Text="{Binding Login}"
                  VerticalAlignment="Center"/>
         <PasswordBox Grid.Row="2"
                      VerticalAlignment="Center"
                      Margin="10,0,10,0"
+                     Name="pass"
                      Controls:PasswordBoxHelper.CapsLockIcon="Caps On"
                      Controls:TextBoxHelper.Watermark="Пароль"
                      Controls:TextBoxHelper.WatermarkWrapping="Wrap"
@@ -36,8 +41,9 @@
                 Margin="10,10,10,10"
                 Content="Зарегистрироваться"
                 BorderThickness="1"
+                Command="{Binding SignUpCmd}"
+                CommandParameter="{Binding ElementName=pass}"
                 Style="{StaticResource AccentedSquareButtonStyle}"
                 Controls:ButtonHelper.PreserveTextCase="True"/>
-
     </Grid>
 </Controls:MetroWindow>

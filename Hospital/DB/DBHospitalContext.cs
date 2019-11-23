@@ -3,9 +3,9 @@ using Hospital.Model;
 
 namespace Hospital.DB
 {
-    public class DBHospitalContext:DbContext
+    public class DBHospitalContext : DbContext
     {
-       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("Server=127.0.0.1;User Id=postgres;Password=nagimullin;Database=hospital;");
         }

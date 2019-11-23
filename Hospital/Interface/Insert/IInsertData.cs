@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hospital.Interface.Insert
 {
-    interface IInsertData
+    public interface IInsertData
     {
     }
 }

@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:vm="clr-namespace:Hospital.ViewModel"
+        d:DataContext="{d:DesignInstance Type=vm:AuthVM, IsDesignTimeCreatable=False}"
         mc:Ignorable="d"
         FontSize="14"
         WindowStartupLocation="CenterScreen"
@@ -18,9 +20,11 @@
                  Controls:TextBoxHelper.ClearTextButton="True"
                  Grid.Row="0"
                  Margin="10,5,10,0"
+                 Text="{Binding Login}"
                  VerticalAlignment="Center"/>
         <PasswordBox Grid.Row="1"
                      VerticalAlignment="Center"
+                     Name="pass"
                      Margin="10,5,10,0"
                      Controls:PasswordBoxHelper.CapsLockIcon="Caps On"
                      Controls:TextBoxHelper.Watermark="Пароль"
@@ -31,6 +35,8 @@
                 Margin="10,10,10,10"
                 Content="Войти"
                 BorderThickness="1"
+                Command="{Binding AuthCmd}"
+                CommandParameter="{Binding ElementName=pass}"
                 Style="{StaticResource AccentedSquareButtonStyle}"
                 Controls:ButtonHelper.PreserveTextCase="True"/>
     </Grid>

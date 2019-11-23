@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:vm="clr-namespace:Hospital.ViewModel"
+        d:DataContext="{d:DesignInstance Type=vm:AppointVM, IsDesignTimeCreatable=False}"
         mc:Ignorable="d"
         FontSize="14"
         WindowStartupLocation="CenterScreen"
@@ -23,24 +25,29 @@
             <TextBox Grid.Row="0"
                      Margin="0,0,10,0"
                      Width="110"
-                 Controls:TextBoxHelper.Watermark="Имя"
-                 Controls:TextBoxHelper.ClearTextButton="True"/>
+                     Text="{Binding FirstName}"
+                     Controls:TextBoxHelper.Watermark="Имя"
+                     Controls:TextBoxHelper.ClearTextButton="True"/>
             <TextBox Grid.Row="0"
                      Width="150"
-                 Controls:TextBoxHelper.Watermark="Фамилия"
-                 Controls:TextBoxHelper.ClearTextButton="True"/>
+                     Text="{Binding SecondName}"
+                     Controls:TextBoxHelper.Watermark="Фамилия"
+                     Controls:TextBoxHelper.ClearTextButton="True"/>
         </StackPanel>
         <TextBox Grid.Row="1"
+                 Text="{Binding PhoneNumber}"
                  Controls:TextBoxHelper.Watermark="Номер телефона"
                  Controls:TextBoxHelper.ClearTextButton="True"
                  VerticalAlignment="Center"
                  Margin="10,0,10,0"/>
         <TextBox Grid.Row="2"
+                 Text="{Binding BirthDate}"
                  Controls:TextBoxHelper.Watermark="Дата рождения"
                  Controls:TextBoxHelper.ClearTextButton="True"
                  VerticalAlignment="Center"
                  Margin="10,0,10,0"/>
         <TextBox Grid.Row="3"
+                 Text="{Binding NumerStr}"
                  Controls:TextBoxHelper.Watermark="Номер страхового полиса"
                  Controls:TextBoxHelper.ClearTextButton="True"
                  VerticalAlignment="Center"
@@ -50,6 +57,7 @@
                 Margin="10,10,10,10"
                 Content="Записаться"
                 BorderThickness="1"
+                Command="{Binding WriteCmd}"
                 Style="{StaticResource AccentedSquareButtonStyle}"
                 Controls:ButtonHelper.PreserveTextCase="True"/>
     </Grid>
