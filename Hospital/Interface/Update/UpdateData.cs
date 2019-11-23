@@ -2,7 +2,8 @@
 
 namespace Hospital.Interface.Update
 {
-    class UpdateData
+    public class UpdateData:IUpdateData
     {
+
     }
 }
