@@ -172,7 +172,10 @@
     <Compile Include="Interface\Select\SelectData.cs" />
     <Compile Include="Interface\Update\IUpdateData.cs" />
     <Compile Include="Interface\Update\UpdateData.cs" />
+    <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\AuthM.cs" />
+    <Compile Include="Model\MedCard.cs" />
+    <Compile Include="Model\OutpatentCard.cs" />
     <Compile Include="Model\Position.cs" />
     <Compile Include="Model\Staff.cs" />
     <Compile Include="Model\User.cs" />

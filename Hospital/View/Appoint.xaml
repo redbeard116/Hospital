@@ -9,9 +9,10 @@
         mc:Ignorable="d"
         FontSize="14"
         WindowStartupLocation="CenterScreen"
-        Title="Запись на прием" Height="300" Width="300">
+        Title="Запись на прием" Height="320" Width="300">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -35,7 +36,7 @@
                      Controls:TextBoxHelper.ClearTextButton="True"/>
         </StackPanel>
         <TextBox Grid.Row="1"
-                 Text="{Binding PhoneNumber}"
+                 Text="{Binding Position}"
                  Controls:TextBoxHelper.Watermark="Номер телефона"
                  Controls:TextBoxHelper.ClearTextButton="True"
                  VerticalAlignment="Center"
@@ -52,7 +53,13 @@
                  Controls:TextBoxHelper.ClearTextButton="True"
                  VerticalAlignment="Center"
                  Margin="10,0,10,0"/>
-        <Button Grid.Row="4"
+        <TextBox Grid.Row="4"
+                 Text="{Binding Description}"
+                 Controls:TextBoxHelper.Watermark="Описание диагноза"
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                 VerticalAlignment="Center"
+                 Margin="10,0,10,0"/>
+        <Button Grid.Row="5"
                 VerticalAlignment="Center"
                 Margin="10,10,10,10"
                 Content="Записаться"

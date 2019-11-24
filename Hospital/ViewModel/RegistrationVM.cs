@@ -12,6 +12,7 @@ namespace Hospital.ViewModel
         private readonly IDialogService _dialogService;
         private readonly ISelectData _selectData;
         private IDialogCoordinator _dialogCoordinator;
+        private User User;
 
 
         public RegistrationVM(IDialogService dialogService,
@@ -31,6 +32,12 @@ namespace Hospital.ViewModel
         private void SignUp(object obj)
         {
             var passwordBox = obj as PasswordBox;
+
+        }
+
+        public User GetUser()
+        {
+            return User;
         }
     }
 }

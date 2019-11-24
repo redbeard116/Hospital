@@ -14,5 +14,8 @@ namespace Hospital.DB
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<AuthM> AuthMs { get; set; }
         public DbSet<Position> Positions { get; set; }
+        public DbSet<OutpatentCard> OutpatentCards { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<MedCard> MedCards { get; set; }
     }
 }

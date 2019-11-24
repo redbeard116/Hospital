@@ -13,6 +13,7 @@ namespace Hospital.ViewModel
         private readonly IDialogService _dialogService;
         private readonly ISelectData _selectData;
         private IDialogCoordinator _dialogCoordinator;
+        private User User;
 
         private string _login;
 
@@ -37,8 +38,14 @@ namespace Hospital.ViewModel
             var passwordBox = obj as PasswordBox;
             if (_selectData.Auth(Login, passwordBox.Password, out User user))
             {
+                User = user;
                 await _dialogCoordinator.ShowMessageAsync(this, "HEADER", "MESSAGE");
             }
+        }
+
+        public User GetUser()
+        {
+            return User;
         }
     }
 }
