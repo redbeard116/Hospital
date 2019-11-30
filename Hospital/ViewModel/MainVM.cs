@@ -22,7 +22,7 @@ namespace Hospital.ViewModel
 
         private void Authorization(object obj)
         {
-            var authVM = new AuthVM(_dialogService, new SelectData(),DialogCoordinator.Instance);
+            var authVM = new AuthVM(_dialogService, new SelectData());
             var auth = new Auth() { DataContext = authVM};
             auth.ShowDialog();
         }
@@ -31,7 +31,7 @@ namespace Hospital.ViewModel
 
         private void Appointment(object obj)
         {
-            var appointVM = new AppointVM(_dialogService,new SelectData(), DialogCoordinator.Instance);
+            var appointVM = new AppointVM(_dialogService,new SelectData());
             var appoint = new Appoint() { DataContext = appointVM };
             appoint.ShowDialog();
         }

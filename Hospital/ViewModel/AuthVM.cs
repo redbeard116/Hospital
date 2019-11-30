@@ -12,18 +12,15 @@ namespace Hospital.ViewModel
     {
         private readonly IDialogService _dialogService;
         private readonly ISelectData _selectData;
-        private IDialogCoordinator _dialogCoordinator;
         private User User;
 
         private string _login;
 
         public AuthVM(IDialogService dialogService,
-                      ISelectData selectData,
-                      IDialogCoordinator instance)
+                      ISelectData selectData)
         {
             _dialogService = dialogService;
             _selectData = selectData;
-            _dialogCoordinator = instance;
         }
 
         public string Login
@@ -39,7 +36,6 @@ namespace Hospital.ViewModel
             if (_selectData.Auth(Login, passwordBox.Password, out User user))
             {
                 User = user;
-                await _dialogCoordinator.ShowMessageAsync(this, "HEADER", "MESSAGE");
             }
         }
 

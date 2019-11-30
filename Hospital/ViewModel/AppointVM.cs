@@ -3,6 +3,7 @@ using Hospital.DialogService;
 using MahApps.Metro.Controls.Dialogs;
 using Hospital.Interface.Select;
 using Hospital.View;
+using System.Windows;
 
 namespace Hospital.ViewModel
 {
@@ -10,15 +11,12 @@ namespace Hospital.ViewModel
     {
         private readonly IDialogService _dialogService;
         private readonly ISelectData _selectData;
-        private IDialogCoordinator _dialogCoordinator;
 
         public AppointVM(IDialogService dialogService,
-                      ISelectData selectData,
-                      IDialogCoordinator instance)
+                      ISelectData selectData)
         {
             _dialogService = dialogService;
             _selectData = selectData;
-            _dialogCoordinator = instance;
         }
 
         public string FirstName { get; set; }
@@ -30,23 +28,23 @@ namespace Hospital.ViewModel
 
         public RelayCommand WriteCmd => new RelayCommand(Write);
 
-        private async void Write(object obj)
+        private void Write(object obj)
         {
-            await _dialogCoordinator.ShowInputAsync(this,"","");
-            if (true)
+            var answer = MessageBox.Show("У вас уже есть аккаунт?","",MessageBoxButton.YesNo,MessageBoxImage.Information);
+            if (answer == MessageBoxResult.Yes)
             {
                 var authV = new Auth();
-                var authVM = new AuthVM(_dialogService,_selectData,_dialogCoordinator);
+                var authVM = new AuthVM(_dialogService,_selectData);
                 authV.DataContext = authVM;
                 if (authV.ShowDialog()==true)
                 {
                     var user = authVM.GetUser();
                 }
             }
-            else
+            else if(answer == MessageBoxResult.No)
             {
                 var regV = new Registration();
-                var regVM = new RegistrationVM(_dialogService,_selectData,_dialogCoordinator);
+                var regVM = new RegistrationVM(_dialogService,_selectData);
                 regV.DataContext = regVM;
                 if (regV.ShowDialog() == true)
                 {

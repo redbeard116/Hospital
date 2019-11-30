@@ -11,17 +11,14 @@ namespace Hospital.ViewModel
     {
         private readonly IDialogService _dialogService;
         private readonly ISelectData _selectData;
-        private IDialogCoordinator _dialogCoordinator;
         private User User;
 
 
         public RegistrationVM(IDialogService dialogService,
-                      ISelectData selectData,
-                      IDialogCoordinator instance)
+                      ISelectData selectData)
         {
             _dialogService = dialogService;
             _selectData = selectData;
-            _dialogCoordinator = instance;
         }
 
         public string Email { get; set; }
