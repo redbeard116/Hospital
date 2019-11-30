@@ -5,6 +5,7 @@ namespace Hospital.Model
     [Table("staff", Schema = "public")]
     public class Staff
     {
+        [System.ComponentModel.DataAnnotations.Key]
         [Column("staff_id")]
         public int StaffId { get; set; }
 
