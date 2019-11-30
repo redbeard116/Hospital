@@ -8,6 +8,7 @@
         d:DataContext="{d:DesignInstance Type=vm:AppointVM, IsDesignTimeCreatable=False}"
         mc:Ignorable="d"
         FontSize="14"
+        Name="appoint"
         WindowStartupLocation="CenterScreen"
         Title="Запись на прием" Height="320" Width="300">
     <Grid>
@@ -26,23 +27,26 @@
             <TextBox Grid.Row="0"
                      Margin="0,0,10,0"
                      Width="110"
-                     Text="{Binding FirstName}"
+                     Text="{Binding FirstName,UpdateSourceTrigger=PropertyChanged}"
                      Controls:TextBoxHelper.Watermark="Имя"
                      Controls:TextBoxHelper.ClearTextButton="True"/>
             <TextBox Grid.Row="0"
                      Width="150"
-                     Text="{Binding SecondName}"
+                     Text="{Binding SecondName,UpdateSourceTrigger=PropertyChanged}"
                      Controls:TextBoxHelper.Watermark="Фамилия"
                      Controls:TextBoxHelper.ClearTextButton="True"/>
         </StackPanel>
-        <TextBox Grid.Row="1"
-                 Text="{Binding Position}"
-                 Controls:TextBoxHelper.Watermark="Номер телефона"
+        <ComboBox Grid.Row="1"
+                 Controls:TextBoxHelper.Watermark="Врач"
                  Controls:TextBoxHelper.ClearTextButton="True"
                  VerticalAlignment="Center"
+                 ItemsSource="{Binding Positions}"
+                 DisplayMemberPath="Name"
+                 SelectedItem="{Binding SelectPosition}"
+                 SelectedValue="PositionId"
                  Margin="10,0,10,0"/>
         <TextBox Grid.Row="2"
-                 Text="{Binding BirthDate}"
+                 Text="{Binding BirthDate,UpdateSourceTrigger=PropertyChanged}"
                  Controls:TextBoxHelper.Watermark="Дата рождения"
                  Controls:TextBoxHelper.ClearTextButton="True"
                  VerticalAlignment="Center"
@@ -65,6 +69,7 @@
                 Content="Записаться"
                 BorderThickness="1"
                 Command="{Binding WriteCmd}"
+                CommandParameter="{Binding ElementName=appoint}"
                 Style="{StaticResource AccentedSquareButtonStyle}"
                 Controls:ButtonHelper.PreserveTextCase="True"/>
     </Grid>

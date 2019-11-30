@@ -1,10 +1,9 @@
-﻿using System;
-using Hospital.Command;
+﻿using Hospital.Command;
 using Hospital.DialogService;
 using Hospital.Interface.Select;
 using Hospital.Model;
-using MahApps.Metro.Controls.Dialogs;
 using System.Windows.Controls;
+using Hospital.Interface.Insert;
 
 namespace Hospital.ViewModel
 {
@@ -12,15 +11,19 @@ namespace Hospital.ViewModel
     {
         private readonly IDialogService _dialogService;
         private readonly ISelectData _selectData;
+        private readonly IInsertData _insertData;
+        private readonly bool IsOpen;
         private User User;
 
-        private string _login;
-
         public AuthVM(IDialogService dialogService,
-                      ISelectData selectData)
+                      ISelectData selectData,
+                      IInsertData insertData,
+                      bool isOpen = true)
         {
             _dialogService = dialogService;
             _selectData = selectData;
+            _insertData = insertData;
+            IsOpen = isOpen;
         }
 
         public string Login
@@ -30,12 +33,21 @@ namespace Hospital.ViewModel
 
         public RelayCommand AuthCmd => new RelayCommand(AuthCommand);
 
-        private async void AuthCommand(object obj)
+        private void AuthCommand(object obj)
         {
             var passwordBox = obj as PasswordBox;
             if (_selectData.Auth(Login, passwordBox.Password, out User user))
             {
                 User = user;
+                if (IsOpen)
+                {
+                    var profileVM = new ProfileVM(_dialogService, _selectData, _insertData, User);
+                    var profileV = new Profile()
+                    {
+                        DataContext = profileVM
+                    };
+                    profileV.ShowDialog(); 
+                }
             }
         }
 

@@ -13,6 +13,6 @@ namespace Hospital.Model
         public int UserId { get; set; }
 
         [Column("card_number")]
-        public int CardNumber { get; set; }
+        public string CardNumber { get; set; }
     }
 }

@@ -177,6 +177,10 @@
     <Compile Include="Model\MedCard.cs" />
     <Compile Include="Model\OutpatentCard.cs" />
     <Compile Include="Model\Position.cs" />
+    <Compile Include="ViewModel\ProfileVM.cs" />
+    <Compile Include="View\Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Staff.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="ViewModel\AppointVM.cs" />
@@ -186,6 +190,10 @@
     <Compile Include="View\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Profile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Appoint.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

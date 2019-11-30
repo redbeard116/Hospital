@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hospital.Model;
 
 namespace Hospital.Interface.Insert
 {
     public interface IInsertData
     {
+        void InsertMedCart(MedCard medcard);
+        void AppointData(Appointment appoitment);
+        int Registration(User user);
+        void SetAuthData(AuthM auth);
     }
 }
