@@ -174,10 +174,21 @@
     <Compile Include="Interface\Update\UpdateData.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\AuthM.cs" />
+    <Compile Include="Model\History.cs" />
     <Compile Include="Model\MedCard.cs" />
     <Compile Include="Model\OutpatentCard.cs" />
     <Compile Include="Model\Position.cs" />
+    <Compile Include="Model\SheduleM.cs" />
+    <Compile Include="ViewModel\EditProfileVM.cs" />
+    <Compile Include="ViewModel\MedicalHistoryVM.cs" />
     <Compile Include="ViewModel\ProfileVM.cs" />
+    <Compile Include="ViewModel\SheduleVM.cs" />
+    <Compile Include="View\EditProfile.xaml.cs">
+      <DependentUpon>EditProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MedicalHistory.xaml.cs">
+      <DependentUpon>MedicalHistory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
@@ -190,6 +201,17 @@
     <Compile Include="View\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Shedule.xaml.cs">
+      <DependentUpon>Shedule.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\EditProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MedicalHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Profile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -221,6 +243,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Registration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Shedule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

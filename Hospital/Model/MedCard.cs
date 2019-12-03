@@ -2,7 +2,7 @@
 
 namespace Hospital.Model
 {
-    [Table("card_id", Schema = "public")]
+    [Table("med_card", Schema = "public")]
     public class MedCard
     {
         [System.ComponentModel.DataAnnotations.Key]

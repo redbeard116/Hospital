@@ -28,13 +28,50 @@ namespace Hospital.Interface.Select
             return db.Positions.ToList();
         }
 
-        public int GetMedCard(int userId)
+        public List<History> GetHistory(int medCardId)
+        {
+            var result = db.OutpatentCards.Where(w=>w.MedCardId == medCardId);
+            var historyes = new List<History>();
+            foreach(var res in result)
+            {
+                var staff = db.Appointments.Find(res.Data);
+                var userId = db.Staffs.Find(staff.DoctorId).UserId;
+                var user = db.Users.Find(userId);
+                historyes.Add(new History
+                {
+                    Diagnoz = res.Diagnoz,
+                    Doctor = $"{user.FirstName} {user.SecondName}",
+                    Description = staff.Description,
+                    Data = res.Data
+                });
+            }
+            return historyes;
+        }
+
+        public MedCard GetMedCard(int userId)
         {
             var med = db.MedCards.FirstOrDefault(w=>w.UserId == userId);
             if (med != null)
-                return med.CardId;
+                return med;
             else
-                return 0;
+                return null;
+        }
+
+        public List<SheduleM> GetShedule(int medCardId)
+        {
+            var result = db.Appointments.Where(w => w.MedCardId == medCardId).ToList();
+            var shedules = new List<SheduleM>();
+            foreach(var res in result.OrderByDescending(w=>w.AppointmentId))
+            {
+                var userId = db.Staffs.Find(res.DoctorId).UserId;
+                var user = db.Users.Find(userId);
+                shedules.Add(new SheduleM
+                {
+                    Data = res.Data,
+                    Doctor = $"{user.FirstName} {user.SecondName}"
+                });
+            }
+            return shedules;
         }
     }
 }

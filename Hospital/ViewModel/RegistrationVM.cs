@@ -3,7 +3,6 @@ using Hospital.DialogService;
 using Hospital.Interface.Insert;
 using Hospital.Interface.Select;
 using Hospital.Model;
-using MahApps.Metro.Controls.Dialogs;
 using System.Windows.Controls;
 
 namespace Hospital.ViewModel
@@ -38,6 +37,12 @@ namespace Hospital.ViewModel
             User.UserId = _insertData.Registration(User);
             var passwordBox = obj as PasswordBox;
             _insertData.SetAuthData(new AuthM {UserId = User.UserId,Login = Login,Password = passwordBox.Password });
+            var profileVM = new ProfileVM(_dialogService, _selectData, _insertData, User);
+            var profileV = new Profile()
+            {
+                DataContext = profileVM
+            };
+            profileV.ShowDialog();
         }
 
         public User GetUser()

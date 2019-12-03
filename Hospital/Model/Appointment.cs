@@ -17,5 +17,8 @@ namespace Hospital.Model
 
         [Column("description")]
         public string Description { get; set; }
+
+        [Column("data")]
+        public string Data { get; set; }
     }
 }

@@ -6,10 +6,11 @@ using System.Windows;
 using Hospital.Model;
 using Hospital.Interface.Insert;
 using System.Collections.ObjectModel;
+using System;
 
 namespace Hospital.ViewModel
 {
-    public class AppointVM:ViewModelBase
+    public class AppointVM : ViewModelBase
     {
         private readonly IDialogService _dialogService;
         private readonly ISelectData _selectData;
@@ -28,7 +29,7 @@ namespace Hospital.ViewModel
             User = user;
             Load();
         }
-        
+
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string BirthDate { get; set; }
@@ -36,7 +37,7 @@ namespace Hospital.ViewModel
         public string Description { get; set; }
         public Position SelectPosition
         {
-            get =>_position;
+            get => _position;
             set
             {
                 _position = value;
@@ -56,7 +57,7 @@ namespace Hospital.ViewModel
                 if (answer == MessageBoxResult.Yes)
                 {
                     var authV = new Auth();
-                    var authVM = new AuthVM(_dialogService, _selectData, _insertData,false);
+                    var authVM = new AuthVM(_dialogService, _selectData, _insertData, false);
                     authV.DataContext = authVM;
                     if (authV.ShowDialog().Value)
                     {
@@ -67,8 +68,8 @@ namespace Hospital.ViewModel
                 else if (answer == MessageBoxResult.No)
                 {
                     var regV = new Registration();
-                    var user = new User {FirstName = FirstName,SecondName= SecondName,BirthDate = BirthDate };
-                    var regVM = new RegistrationVM(_dialogService, _selectData,_insertData, user);
+                    var user = new User { FirstName = FirstName, SecondName = SecondName, BirthDate = BirthDate };
+                    var regVM = new RegistrationVM(_dialogService, _selectData, _insertData, user);
                     regV.DataContext = regVM;
                     if (regV.ShowDialog().Value)
                     {
@@ -76,7 +77,7 @@ namespace Hospital.ViewModel
                         _insertData.InsertMedCart(new MedCard { UserId = User.UserId, CardNumber = NumerStr });
                         Appoint();
                     }
-                } 
+                }
             }
             if (obj is Window view)
                 view.Close();
@@ -90,6 +91,13 @@ namespace Hospital.ViewModel
             foreach (var staff in staffs)
             {
                 Positions.Add(staff);
+            }
+            if (User != null)
+            {
+                NumerStr = _selectData.GetMedCard(User.UserId).CardNumber;
+                FirstName = User.FirstName;
+                SecondName = User.SecondName;
+                BirthDate = User.BirthDate;
             }
         }
 
@@ -111,9 +119,10 @@ namespace Hospital.ViewModel
         {
             var appoint = new Appointment
             {
-                MedCardId = _selectData.GetMedCard(User.UserId),
+                MedCardId = _selectData.GetMedCard(User.UserId).CardId,
                 Description = Description,
-                DoctorId = _selectData.GetAppointDoctor(SelectPosition.PositionId)
+                DoctorId = _selectData.GetAppointDoctor(SelectPosition.PositionId),
+                Data = DateTime.Now.AddDays(+3).ToString()
             };
             _insertData.AppointData(appoint);
         }
