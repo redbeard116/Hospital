@@ -183,6 +183,8 @@
     <Compile Include="ViewModel\MedicalHistoryVM.cs" />
     <Compile Include="ViewModel\ProfileVM.cs" />
     <Compile Include="ViewModel\SheduleVM.cs" />
+    <Compile Include="ViewModel\StaffProfileVM.cs" />
+    <Compile Include="ViewModel\StatementVM.cs" />
     <Compile Include="View\EditProfile.xaml.cs">
       <DependentUpon>EditProfile.xaml</DependentUpon>
     </Compile>
@@ -203,6 +205,12 @@
     </Compile>
     <Compile Include="View\Shedule.xaml.cs">
       <DependentUpon>Shedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StaffProfile.xaml.cs">
+      <DependentUpon>StaffProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StatementV.xaml.cs">
+      <DependentUpon>StatementV.xaml</DependentUpon>
     </Compile>
     <Page Include="View\EditProfile.xaml">
       <SubType>Designer</SubType>
@@ -247,6 +255,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Shedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StaffProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StatementV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

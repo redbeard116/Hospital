@@ -4,6 +4,7 @@ using Hospital.Interface.Select;
 using Hospital.Model;
 using System.Windows.Controls;
 using Hospital.Interface.Insert;
+using Hospital.View;
 
 namespace Hospital.ViewModel
 {
@@ -41,12 +42,24 @@ namespace Hospital.ViewModel
                 User = user;
                 if (IsOpen)
                 {
-                    var profileVM = new ProfileVM(_dialogService, _selectData, _insertData, User);
-                    var profileV = new Profile()
+                    if (!_selectData.IsStaff(User.UserId))
                     {
-                        DataContext = profileVM
-                    };
-                    profileV.ShowDialog(); 
+                        var profileVM = new ProfileVM(_dialogService, _selectData, _insertData, User);
+                        var profileV = new Profile()
+                        {
+                            DataContext = profileVM
+                        };
+                        profileV.ShowDialog();
+                    }
+                    else
+                    {
+                        var profileVM = new StaffProfileVM(_dialogService, _selectData, _insertData, User);
+                        var profileV = new StaffProfile()
+                        {
+                            DataContext = profileVM
+                        };
+                        profileV.ShowDialog();
+                    }
                 }
             }
         }

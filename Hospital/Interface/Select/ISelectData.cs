@@ -11,5 +11,8 @@ namespace Hospital.Interface.Select
         int GetAppointDoctor(int positionId);
         List<History> GetHistory(int medCardId);
         List<SheduleM> GetShedule(int medCardId);
+        List<SheduleM> GetStaffShedule(int userId);
+        List<User> GetPatient(int doctorId);
+        bool IsStaff(int userId);
     }
 }

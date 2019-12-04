@@ -1,0 +1,39 @@
+﻿<Window x:Class="Hospital.View.StaffProfile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:vm="clr-namespace:Hospital.ViewModel"
+        d:DataContext="{d:DesignInstance Type=vm:StaffProfileVM, IsDesignTimeCreatable=False}"
+        mc:Ignorable="d"
+        FontSize="14"
+        Name="prof"
+        Title="StaffProfile" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Controls:Tile Grid.Column="0"
+                       Grid.Row="0"
+                       Content="Расписание"
+                       Command="{Binding SheduleCmd}"/>
+        <Controls:Tile Grid.Column="1"
+                       Grid.Row="0"
+                       Content="Выписка"/>
+        <Controls:Tile Grid.Column="0"
+                       Grid.Row="1"
+                       Content="Профиль"
+                       Command="{Binding ProfileCmd}"/>
+        <Controls:Tile Grid.Column="1"
+                       Grid.Row="1"
+                       Content="Выйти"
+                       Command="{Binding CloseCmd}"
+                       CommandParameter="{Binding ElementName=prof}"/>
+    </Grid>
+</Window>

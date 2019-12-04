@@ -13,12 +13,17 @@ namespace Hospital.ViewModel
 
         public SheduleVM(IDialogService dialogService,
                          ISelectData selectData,
-                         int userId)
+                         int userId,
+                         bool isStaff = false)
         {
             _dialogService = dialogService;
             _selectData = selectData;
             Shedules = new ObservableCollection<SheduleM>();
-            Load(userId);
+            if (!isStaff)
+                Load(userId);
+            else
+                LoadStaff(userId);
+
         }
 
         public ObservableCollection<SheduleM> Shedules { get; set; }
@@ -27,6 +32,13 @@ namespace Hospital.ViewModel
         {
             var medcard = _selectData.GetMedCard(userId);
             var result = _selectData.GetShedule(medcard.CardId);
+            foreach (var res in result)
+                Shedules.Add(res);
+        }
+
+        private void LoadStaff(int userId)
+        {
+            var result = _selectData.GetStaffShedule(userId);
             foreach (var res in result)
                 Shedules.Add(res);
         }

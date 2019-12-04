@@ -15,11 +15,14 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
                                Content="{Binding Data}"/>
                         <Label Grid.Column="1"
-                               Content="{Binding Doctpr}"/>
+                               Content="{Binding User}"/>
+                        <Label Grid.Column="2"
+                               Content="{Binding Description}"/>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
