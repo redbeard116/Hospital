@@ -31,8 +31,9 @@ namespace Hospital.ViewModel
         private void Authorization(object obj)
         {
             var authVM = new AuthVM(_dialogService,_selectData,_insertData);
-            var auth = new Auth() { DataContext = authVM};
-            auth.ShowDialog();
+            var result = _dialogService.ShowWindow(new Auth(),authVM);
+            if (result.HasValue)
+                _dialogService.CloseWindow();
         }
 
         public RelayCommand AppointmentCmd => new RelayCommand(Appointment);
@@ -40,8 +41,9 @@ namespace Hospital.ViewModel
         private void Appointment(object obj)
         {
             var appointVM = new AppointVM(_dialogService,_selectData,_insertData,null);
-            var appoint = new Appoint() { DataContext = appointVM };
-            appoint.ShowDialog();
+            var result = _dialogService.ShowWindow(new Appoint(), appointVM);
+            if (result.HasValue)
+                _dialogService.CloseWindow();
         }
     }
 }

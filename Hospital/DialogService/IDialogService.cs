@@ -4,6 +4,8 @@ namespace Hospital.DialogService
 {
     public interface IDialogService
     {
-        void ShowWindow(object viewModel, object dataContex);
+        bool? ShowWindow(object view, object dataContext);
+
+        void CloseWindow();
     }
 }

@@ -19,8 +19,23 @@ namespace Hospital.Interface.Select
 
         public int GetAppointDoctor(int positionId)
         {
-            var count = db.Staffs.Where(w => w.PositionId == positionId).Count();
-            return count;
+            var doctors = db.Staffs.Where(w => w.PositionId == positionId).ToList();
+            int doctorId = 0;
+            int minCount = 0;
+            foreach(var doctor in doctors)
+            {
+                var count = GetAppCount(doctor.UserId);
+                if (count < minCount)
+                {
+                    minCount = count;
+                    doctorId = doctor.UserId;
+                }
+            }
+            return doctorId;
+        }
+        private int GetAppCount(int doctorId)
+        {
+            return db.Appointments.Where(w => w.DoctorId == doctorId).Count();
         }
 
         public List<Position> GetDoctors()
@@ -66,8 +81,8 @@ namespace Hospital.Interface.Select
                 DateTime.TryParse(res.Data, out DateTime time);
                 if (time > DateTime.Now)
                 {
-                    var medCard = GetMedCard(res.MedCardId);
-                    users.Add(db.Users.Find(medCard.UserId));
+                    var user = db.MedCards.FirstOrDefault(w=>w.CardId == res.MedCardId);
+                    users.Add(db.Users.Find(user.UserId));
                 }
             }
             return users;

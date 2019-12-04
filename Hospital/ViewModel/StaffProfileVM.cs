@@ -54,18 +54,15 @@ namespace Hospital.ViewModel
         private void Shedules(object obj)
         {
             var sheduleVM = new SheduleVM(_dialogService, _selectData, User.UserId,true);
-            var sheduleV = new Shedule
-            {
-                DataContext = sheduleVM
-            };
-            sheduleV.ShowDialog();
+            _dialogService.ShowWindow(new Shedule(),sheduleVM);
         }
 
         public RelayCommand StatemetCmd => new RelayCommand(Statemet);
 
         private void Statemet(object obj)
         {
-            throw new NotImplementedException();
+            var statementVM = new StatementVM(_insertData,_selectData,User);
+            _dialogService.ShowWindow(new StatementV(),statementVM);
         }
     }
 }

@@ -42,25 +42,19 @@ namespace Hospital.ViewModel
                 User = user;
                 if (IsOpen)
                 {
+                    _dialogService.CloseWindow();
                     if (!_selectData.IsStaff(User.UserId))
                     {
                         var profileVM = new ProfileVM(_dialogService, _selectData, _insertData, User);
-                        var profileV = new Profile()
-                        {
-                            DataContext = profileVM
-                        };
-                        profileV.ShowDialog();
+                        _dialogService.ShowWindow(new Profile(),profileVM);
                     }
                     else
                     {
                         var profileVM = new StaffProfileVM(_dialogService, _selectData, _insertData, User);
-                        var profileV = new StaffProfile()
-                        {
-                            DataContext = profileVM
-                        };
-                        profileV.ShowDialog();
+                        _dialogService.ShowWindow(new StaffProfile(),profileVM);
                     }
                 }
+                _dialogService.CloseWindow();
             }
         }
 

@@ -20,5 +20,7 @@ namespace Hospital.Model
 
         [Column("email")]
         public string Email { get; set; }
+        
+        public string FullName { get => $"{FirstName} {SecondName}"; }
     }
 }

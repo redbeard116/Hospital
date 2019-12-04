@@ -1,14 +1,23 @@
-﻿using Hospital.View;
+﻿using System;
+using Hospital.View;
+using System.Windows;
 
 namespace Hospital.DialogService
 {
     public class DialogService : IDialogService
     {
-        public void ShowWindow(object viewModel, object dataContex)
+        private Window window; 
+
+        public bool? ShowWindow(object view,object dataContext)
         {
-            var view = new Auth();
-            view.DataContext = dataContex;
-            view.ShowDialog();
+            window = view as Window;
+            window.DataContext = dataContext;
+            return window.ShowDialog();
+        }
+
+        public void CloseWindow()
+        {
+            window.Close();
         }
     }
 }

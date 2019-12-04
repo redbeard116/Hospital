@@ -56,32 +56,29 @@ namespace Hospital.ViewModel
                 var answer = MessageBox.Show("У вас уже есть аккаунт?", "", MessageBoxButton.YesNo, MessageBoxImage.Information);
                 if (answer == MessageBoxResult.Yes)
                 {
-                    var authV = new Auth();
                     var authVM = new AuthVM(_dialogService, _selectData, _insertData, false);
-                    authV.DataContext = authVM;
-                    if (authV.ShowDialog().Value)
+                    var result =_dialogService.ShowWindow(new Auth(), authVM);
+                    if (result.HasValue)
                     {
                         User = authVM.GetUser();
-                        Appoint();
                     }
                 }
                 else if (answer == MessageBoxResult.No)
                 {
-                    var regV = new Registration();
                     var user = new User { FirstName = FirstName, SecondName = SecondName, BirthDate = BirthDate };
-                    var regVM = new RegistrationVM(_dialogService, _selectData, _insertData, user);
-                    regV.DataContext = regVM;
-                    if (regV.ShowDialog().Value)
+                    var regVM = new RegistrationVM(_dialogService, _selectData, _insertData, user,true);
+                    var result = _dialogService.ShowWindow(new Registration(),regVM);
+                    if (result.HasValue)
                     {
                         User = regVM.GetUser();
                         _insertData.InsertMedCart(new MedCard { UserId = User.UserId, CardNumber = NumerStr });
-                        Appoint();
                     }
                 }
             }
+            Appoint();
             if (obj is Window view)
                 view.Close();
-            Continue();
+            Continue();  
         }
 
         private void Load()
@@ -107,11 +104,7 @@ namespace Hospital.ViewModel
             if (answer == MessageBoxResult.Yes)
             {
                 var profileVM = new ProfileVM(_dialogService, _selectData, _insertData, User);
-                var profileV = new Profile()
-                {
-                    DataContext = profileVM
-                };
-                profileV.ShowDialog();
+                _dialogService.ShowWindow(new Profile(),profileVM);
             }
         }
 

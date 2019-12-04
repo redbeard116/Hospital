@@ -20,6 +20,12 @@ namespace Hospital.Interface.Insert
             db.SaveChanges();
         }
 
+        public void InsertOutpatent(OutpatentCard outpatent)
+        {
+            db.OutpatentCards.Add(outpatent);
+            db.SaveChanges();
+        }
+
         public int Registration(User user)
         {
             db.Users.Add(user);

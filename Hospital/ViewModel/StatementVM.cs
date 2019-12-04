@@ -4,6 +4,7 @@ using Hospital.Model;
 using System.Windows;
 using System.Collections.ObjectModel;
 using Hospital.Interface.Insert;
+using System;
 
 namespace Hospital.ViewModel
 {
@@ -43,14 +44,20 @@ namespace Hospital.ViewModel
                 OnPropertyChanged(nameof(SelectedUser));
             }
         }
-
+        public string Diagnoz { get; set; }
 
 
         public RelayCommand StatementCmd => new RelayCommand(Statement);
 
         private void Statement(object obj)
         {
-            
+            var outpatent = new OutpatentCard
+            {
+                Data = DateTime.Now.ToString(),
+                MedCardId = _selectData.GetMedCard(SelectedUser.UserId).CardId,
+                Diagnoz = Diagnoz
+            };
+            _insertData.InsertOutpatent(outpatent);
             if (obj is Window view)
             {
                 view.Close();
