@@ -7,7 +7,7 @@
         d:DataContext="{d:DesignInstance Type=vm:EditProfileVM, IsDesignTimeCreatable=False}"
         mc:Ignorable="d"
         Name="edit"
-        Title="EditProfile" Height="250" Width="250">
+        Title="Изменить профиль" Height="250" Width="250">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>

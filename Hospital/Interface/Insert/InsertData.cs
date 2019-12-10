@@ -38,5 +38,24 @@ namespace Hospital.Interface.Insert
             db.AuthMs.Add(auth);
             db.SaveChanges();
         }
+
+        public int AddUser(User user)
+        {
+            db.Users.Add(user);
+            db.SaveChanges();
+            return user.UserId;
+        }
+
+        public void AddAuthData(AuthM auth)
+        {
+            db.AuthMs.Add(auth);
+            db.SaveChanges();
+        }
+
+        public void AddStaff(Staff staff)
+        {
+            db.Staffs.Add(staff);
+            db.SaveChanges();
+        }
     }
 }

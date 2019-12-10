@@ -6,7 +6,7 @@
         xmlns:vm="clr-namespace:Hospital.ViewModel"
         d:DataContext="{d:DesignInstance Type=vm:SheduleVM, IsDesignTimeCreatable=False}"
         mc:Ignorable="d"
-        Title="Shedule" Height="300" Width="300">
+        Title="Расписание" Height="300" Width="300">
     <Grid>
         <ItemsControl ItemsSource="{Binding Shedules}">
             <ItemsControl.ItemTemplate>

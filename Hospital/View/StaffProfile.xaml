@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         FontSize="14"
         Name="prof"
-        Title="StaffProfile" Height="300" Width="300">
+        Title="Профиль" Height="300" Width="300">
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

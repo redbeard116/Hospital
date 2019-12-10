@@ -32,7 +32,7 @@ namespace Hospital.ViewModel
 
         public string FirstName { get; set; }
         public string SecondName { get; set; }
-        public string BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
         public string NumerStr { get; set; }
         public string Description { get; set; }
         public Position SelectPosition
@@ -65,7 +65,7 @@ namespace Hospital.ViewModel
                 }
                 else if (answer == MessageBoxResult.No)
                 {
-                    var user = new User { FirstName = FirstName, SecondName = SecondName, BirthDate = BirthDate };
+                    var user = new User { FirstName = FirstName, SecondName = SecondName, BirthDate = BirthDate.ToString() };
                     var regVM = new RegistrationVM(_dialogService, _selectData, _insertData, user,true);
                     var result = _dialogService.ShowWindow(new Registration(),regVM);
                     if (result.HasValue)
@@ -94,7 +94,8 @@ namespace Hospital.ViewModel
                 NumerStr = _selectData.GetMedCard(User.UserId).CardNumber;
                 FirstName = User.FirstName;
                 SecondName = User.SecondName;
-                BirthDate = User.BirthDate;
+                DateTime.TryParse(User.BirthDate, out DateTime birthDate);
+                BirthDate = BirthDate;
             }
         }
 

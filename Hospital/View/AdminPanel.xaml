@@ -1,18 +1,17 @@
-﻿<Controls:MetroWindow x:Class="Hospital.View.Appoint"
+﻿<Controls:MetroWindow x:Class="Hospital.View.AdminPanel"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:vm="clr-namespace:Hospital.ViewModel"
-        d:DataContext="{d:DesignInstance Type=vm:AppointVM, IsDesignTimeCreatable=False}"
+        d:DataContext="{d:DesignInstance Type=vm:AdminPanelVM, IsDesignTimeCreatable=False}"
         mc:Ignorable="d"
-        FontSize="14"
-        Name="appoint"
         WindowStartupLocation="CenterScreen"
-        Title="Запись на прием" Height="320" Width="300">
+        Title="Регистрация" Height="400" Width="300">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -36,8 +35,17 @@
                      Controls:TextBoxHelper.Watermark="Фамилия"
                      Controls:TextBoxHelper.ClearTextButton="True"/>
         </StackPanel>
-        <ComboBox Grid.Row="1"
-                 Controls:TextBoxHelper.Watermark="Врач"
+        <Controls:DateTimePicker Grid.Row="1"
+                                 SelectedDate="{Binding BirthDate}"
+                                 Culture="ru-Ru"
+                                 SelectedDateFormat="Short"
+                                 IsTodayHighlighted="True"
+                                 Controls:TextBoxHelper.Watermark="Дата рождения"
+                                 Controls:TextBoxHelper.ClearTextButton="True"
+                                 VerticalAlignment="Center"
+                                 Margin="10,0,10,0"/>
+        <ComboBox Grid.Row="2"
+                 Controls:TextBoxHelper.Watermark="Должность"
                  Controls:TextBoxHelper.ClearTextButton="True"
                  VerticalAlignment="Center"
                  ItemsSource="{Binding Positions}"
@@ -45,33 +53,32 @@
                  SelectedItem="{Binding SelectPosition}"
                  SelectedValue="PositionId"
                  Margin="10,0,10,0"/>
-        <Controls:DateTimePicker Grid.Row="2"
-                                 SelectedDate="{Binding BirthDate,UpdateSourceTrigger=PropertyChanged}"
-                                 Culture="ru-Ru"
-                                 SelectedDateFormat="Short"
-                                 Controls:TextBoxHelper.Watermark="Дата рождения"
-                                 Controls:TextBoxHelper.ClearTextButton="True"
-                                 VerticalAlignment="Center"
-                                 Margin="10,0,10,0"/>
         <TextBox Grid.Row="3"
-                 Text="{Binding NumerStr}"
-                 Controls:TextBoxHelper.Watermark="Номер страхового полиса"
+                 Text="{Binding Email}"
+                 Controls:TextBoxHelper.Watermark="Email"
                  Controls:TextBoxHelper.ClearTextButton="True"
                  VerticalAlignment="Center"
                  Margin="10,0,10,0"/>
         <TextBox Grid.Row="4"
-                 Text="{Binding Description}"
-                 Controls:TextBoxHelper.Watermark="Описание диагноза"
+                 Text="{Binding Login}"
+                 Controls:TextBoxHelper.Watermark="Login"
                  Controls:TextBoxHelper.ClearTextButton="True"
                  VerticalAlignment="Center"
                  Margin="10,0,10,0"/>
-        <Button Grid.Row="5"
+        <PasswordBox Grid.Row="5"
+                 Name="password"
+                 Controls:TextBoxHelper.Watermark="Password"
+                 Controls:TextBoxHelper.ClearTextButton="True"
+                 Controls:PasswordBoxHelper.CapsLockIcon="Caps On"
+                 VerticalAlignment="Center"
+                 Margin="10,0,10,0"/>
+        <Button Grid.Row="6"
                 VerticalAlignment="Center"
                 Margin="10,10,10,10"
                 Content="Записаться"
                 BorderThickness="1"
-                Command="{Binding WriteCmd}"
-                CommandParameter="{Binding ElementName=appoint}"
+                Command="{Binding SignUpCmd}"
+                CommandParameter="{Binding ElementName=password}"
                 Style="{StaticResource AccentedSquareButtonStyle}"
                 Controls:ButtonHelper.PreserveTextCase="True"/>
     </Grid>

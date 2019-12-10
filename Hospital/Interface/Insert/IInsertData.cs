@@ -9,5 +9,8 @@ namespace Hospital.Interface.Insert
         int Registration(User user);
         void SetAuthData(AuthM auth);
         void InsertOutpatent(OutpatentCard outpatent);
+        int AddUser(User user);
+        void AddAuthData(AuthM auth);
+        void AddStaff(Staff staff);
     }
 }

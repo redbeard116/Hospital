@@ -37,7 +37,13 @@ namespace Hospital.ViewModel
         private void AuthCommand(object obj)
         {
             var passwordBox = obj as PasswordBox;
-            if (_selectData.Auth(Login, passwordBox.Password, out User user))
+            if (Login.Equals("admin") && passwordBox.Password.Equals("admin"))
+            {
+                var adminPanel = new AdminPanelVM(_dialogService,_insertData,_selectData);
+                _dialogService.ShowWindow(new AdminPanel(),adminPanel);
+                _dialogService.CloseWindow();
+            }
+            else if (_selectData.Auth(Login, passwordBox.Password, out User user))
             {
                 User = user;
                 if (IsOpen)

@@ -6,7 +6,7 @@
         xmlns:vm="clr-namespace:Hospital.ViewModel"
         d:DataContext="{d:DesignInstance Type=vm:MedicalHistoryVM, IsDesignTimeCreatable=False}"
         mc:Ignorable="d"
-        Title="MedicalHistory" Height="300" Width="300">
+        Title="История" Height="300" Width="300">
     <Grid>
         <ItemsControl ItemsSource="{Binding History}">
             <ItemsControl.ItemTemplate>

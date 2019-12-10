@@ -7,7 +7,7 @@
         d:DataContext="{d:DesignInstance Type=vm:StatementVM, IsDesignTimeCreatable=False}"
         mc:Ignorable="d"
         Name="stat"
-        Title="StatementV" Height="300" Width="300">
+        Title="Выписка" Height="300" Width="300">
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>

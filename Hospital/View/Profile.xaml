@@ -8,7 +8,7 @@
         d:DataContext="{d:DesignInstance Type=vm:ProfileVM, IsDesignTimeCreatable=False}"
         mc:Ignorable="d"
         Name="profile"
-        Title="Profile" Height="300" Width="300">
+        Title="Профиль" Height="300" Width="300">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
